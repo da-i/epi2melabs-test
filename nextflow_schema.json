@@ -1,0 +1,25 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "https://raw.githubusercontent.com/Epi2me-test/master/nextflow_schema.json",
+  "title": "Epi2me-test pipeline parameters",
+  "description": "Testing the loading of workflows into Epi2me.",
+  "type": "object",
+  "properties": {
+      "input_read_dir": {
+          "type": "string",
+          "default": null
+      },
+      "backbone": {
+          "type": "string",
+          "default": "BB41"
+      },
+      "reference": {
+          "type": "string",
+          "default": null
+      }
+  },
+  "required": [
+      "input_read_dir",
+      "reference"
+  ]
+}
