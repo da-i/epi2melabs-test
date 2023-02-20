@@ -64,7 +64,7 @@
             "properties": {
                 "profile_selected": {
                     "type": "string",
-                    "default": "none"
+                    "default": "docker"
                 },
                 "qc": {
                     "type": "string",
