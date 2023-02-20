@@ -4,6 +4,7 @@ nextflow.enable.dsl=2
 process FastqToFasta {
     // publishDir "${params.output_dir}/${task.process.replaceAll(':', '/')}", pattern: "", mode: 'copy'
     label 'many_cpu_medium'
+    container 'damicyclomics/cyclomicseq:0.7.2'
 
     input:
         path(fastq)
@@ -20,6 +21,7 @@ process FastqToFasta {
 process Extract5PrimeFasta {
     // publishDir "${params.output_dir}/${task.process.replaceAll(':', '/')}", pattern: "", mode: 'copy'
     label 'many_cpu_medium'
+    container 'damicyclomics/cyclomicseq:0.7.2'
 
     input:
         path fasta
@@ -37,6 +39,7 @@ process Extract5PrimeFasta {
 process MergeFasta {
     // publishDir "${params.output_dir}/${task.process.replaceAll(':', '/')}", pattern: "", mode: 'copy'
     label 'many_cpu_medium'
+    container 'damicyclomics/cyclomicseq:0.7.2'
 
     input:
         path fasta1
@@ -56,6 +59,7 @@ process MergeFasta {
 process Extract3PrimeFasta {
     // publishDir "${params.output_dir}/${task.process.replaceAll(':', '/')}", pattern: "", mode: 'copy'
     label 'many_cpu_medium'
+    container 'damicyclomics/cyclomicseq:0.7.2'
 
     input:
         path fasta
@@ -74,6 +78,7 @@ process Extract3PrimeFasta {
 process ExtractSpecificRead{
     // publishDir "${params.output_dir}/${task.process.replaceAll(':', '/')}", pattern: "", mode: 'copy'
     label 'many_cpu_medium'
+    container 'damicyclomics/cyclomicseq:0.7.2'
 
     input:
         path fasta
@@ -91,6 +96,8 @@ process ExtractSpecificRead{
 process CountFastqInfo{
     // publishDir "${params.output_dir}/${task.process.replaceAll(':', '/')}", pattern: "", mode: 'copy'
     publishDir "${params.output_dir}/QC", mode: 'copy'
+    container 'damicyclomics/cyclomicseq:0.7.2'
+
 
     input:
         path(fastq)
@@ -112,6 +119,7 @@ process CountFastqInfo{
 
 process FilterShortReads{
     label 'many_cpu_medium'
+    container 'damicyclomics/cyclomicseq:0.7.2'
 
     input:
         path(fastq)

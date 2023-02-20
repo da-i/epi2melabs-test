@@ -4,6 +4,8 @@
 process AddDepthToJson{
     // publishDir "${params.output_dir}/${task.process.replaceAll(':', '/')}", pattern: "", mode: 'copy'
     label 'many_cpu_medium'
+    container 'damicyclomics/cyclomicseq:0.7.2'
+
 
     input:
         tuple val(X), path(tidehuntertable)
@@ -21,6 +23,8 @@ process AddDepthToJson{
 process AnnotateBamXTags{
     // publishDir "${params.output_dir}/${task.process.replaceAll(':', '/')}", pattern: "", mode: 'copy'
     publishDir "${params.output_dir}/consensus_aligned", mode: 'copy'
+    container 'damicyclomics/cyclomicseq:0.7.2'
+
 
     label 'many_low_cpu_high_mem'
 
@@ -39,6 +43,8 @@ process AnnotateBamXTags{
 
 process AnnotateBamYTags{
     // publishDir "${params.output_dir}/${task.process.replaceAll(':', '/')}", pattern: "", mode: 'copy'
+    container 'damicyclomics/cyclomicseq:0.7.2'
+
 
     label 'many_low_cpu_high_mem'
 
@@ -57,6 +63,8 @@ process AnnotateBamYTags{
 
 process CollectClassificationTypes{
     // publishDir "${params.output_dir}/${task.process.replaceAll(':', '/')}", pattern: "", mode: 'copy'
+    container 'damicyclomics/cyclomicseq:0.7.2'
+
 
     input:
         path(metadata_json)
@@ -72,6 +80,8 @@ process CollectClassificationTypes{
 
 process FindVariants{
     publishDir "${params.output_dir}/variants", mode: 'copy'
+    container 'damicyclomics/cyclomicseq:0.7.2'
+
 
     label 'max_performance'
 
@@ -91,6 +101,8 @@ process FindVariants{
 
 process FilterVariants{
     publishDir "${params.output_dir}/variants", mode: 'copy'
+    container 'damicyclomics/cyclomicseq:0.7.2'
+
 
     input:
         tuple path(snp_vcf), path(indel_vcf), val(X), path(perbase_table)
@@ -124,6 +136,8 @@ process FilterVariants{
 
 process MergeNoisyVCF{
     publishDir "${params.output_dir}/variants", mode: 'copy'
+    container 'damicyclomics/cyclomicseq:0.7.2'
+
 
     input:
         tuple path(noisy_snp_vcf), path(noisy_indel_vcf)
@@ -150,6 +164,8 @@ process MergeNoisyVCF{
 
 process MergeFilteredVCF{
     publishDir "${params.output_dir}/variants", mode: 'copy'
+    container 'damicyclomics/cyclomicseq:0.7.2'
+
 
     input:
         tuple path(filtered_snp_vcf), path(filtered_indel_vcf)
@@ -176,6 +192,8 @@ process MergeFilteredVCF{
 
 process AnnotateVCF{
     publishDir "${params.output_dir}/variants", mode: 'copy'
+    container 'damicyclomics/cyclomicseq:0.7.2'
+
 
     input:
         path(variant_vcf)
@@ -193,6 +211,8 @@ process AnnotateVCF{
 process PlotFastqsQUalAndLength{
     // publishDir "${params.output_dir}/${task.process.replaceAll(':', '/')}", pattern: "", mode: 'copy'
     publishDir "${params.output_dir}/QC", mode: 'copy'
+    container 'damicyclomics/cyclomicseq:0.7.2'
+
 
     input:
         path(fastq)
@@ -212,6 +232,8 @@ process PlotFastqsQUalAndLength{
 process PlotReadStructure{
     // publishDir "${params.output_dir}/${task.process.replaceAll(':', '/')}", pattern: "", mode: 'copy'
     publishDir "${params.output_dir}/QC", mode: 'copy'
+    container 'damicyclomics/cyclomicseq:0.7.2'
+
 
     input:
         tuple val(X), path(bam), path(bai)
@@ -228,6 +250,8 @@ process PlotReadStructure{
 process PlotVcf{
     // publishDir "${params.output_dir}/${task.process.replaceAll(':', '/')}", pattern: "", mode: 'copy'
     publishDir "${params.output_dir}/QC", mode: 'copy'
+    container 'damicyclomics/cyclomicseq:0.7.2'
+
 
     input:
         path(vcf)
@@ -244,6 +268,8 @@ process PlotVcf{
 
 process PasteVariantTable{
     publishDir "${params.output_dir}/QC", mode: 'copy'
+    container 'damicyclomics/cyclomicseq:0.7.2'
+
 
     input:
         path(vcf_file)
@@ -261,6 +287,8 @@ process PasteVariantTable{
 process PlotQScores{
     // publishDir "${params.output_dir}/${task.process.replaceAll(':', '/')}", pattern: "", mode: 'copy'
     publishDir "${params.output_dir}/QC", mode: 'copy'
+    container 'damicyclomics/cyclomicseq:0.7.2'
+
 
     input:
         tuple val(X), path(split_pileup)
@@ -278,6 +306,8 @@ process PlotQScores{
 process PlotMetadataStats{
     // publishDir "${params.output_dir}/${task.process.replaceAll(':', '/')}", pattern: "", mode: 'copy'
     publishDir "${params.output_dir}/QC", mode: 'copy'
+    container 'damicyclomics/cyclomicseq:0.7.2'
+
 
     input:
         path(jsons)
@@ -292,6 +322,8 @@ process PlotMetadataStats{
 }
 process PlotReport{
     publishDir "${params.output_dir}/QC", mode: 'copy'
+    container 'damicyclomics/cyclomicseq:0.7.2'
+
 
     input:
         path(jsons)
