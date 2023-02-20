@@ -68,7 +68,7 @@
                 },
                 "alignment": {
                     "type": "string",
-                    "default": "bwa"
+                    "default": "bwamem"
                 },
                 "consensus_calling": {
                     "type": "string",
