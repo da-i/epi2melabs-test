@@ -6,6 +6,8 @@ process TrimFasta {
     // used to reduce the length of the readname in fasta files
     // publishDir "${params.output_dir}/${task.process.replaceAll(':', '/')}", pattern: "", mode: 'copy'
     label 'many_cpu_medium'
+    container 'damicyclomics/cyclomicseq:0.7.2'
+
 
     
     input:
@@ -25,6 +27,8 @@ process ConcatenateFasta {
     // Call `cat` on all files (eg fasta) that enter the process
     // publishDir "${params.output_dir}/${task.process.replaceAll(':', '/')}", pattern: "", mode: 'copy'
     label 'many_cpu_medium'
+    container 'damicyclomics/cyclomicseq:0.7.2'
+
 
     
     input:
@@ -42,6 +46,8 @@ process ConcatenateFasta {
 process splitSequences {
     // publishDir "${params.output_dir}/${task.process.replaceAll(':', '/')}", pattern: "", mode: 'copy'
     label 'many_cpu_medium'
+    container 'damicyclomics/cyclomicseq:0.7.2'
+
 
     input:
         path(fasta)
@@ -59,6 +65,8 @@ process ConcatenateFastq {
     // Call `cat` on all files (eg fasta) that enter the process
     // publishDir "${params.output_dir}/${task.process.replaceAll(':', '/')}", pattern: "", mode: 'copy'
     label 'many_cpu_medium'
+    container 'damicyclomics/cyclomicseq:0.7.2'
+
 
     
     input:
@@ -77,6 +85,8 @@ process FilterBams{
     // given a tuple, filter on the fact that the second argument is bigger or equal to 1
     // publishDir "${params.output_dir}/${task.process.replaceAll(':', '/')}", pattern: "", mode: 'copy'
     label 'many_cpu_medium'
+    container 'damicyclomics/cyclomicseq:0.7.2'
+
 
     input:
         tuple val(X), val(filter_value), path(bam), path(bai)
@@ -97,6 +107,8 @@ process FilterBams{
 process ConcatBams{
     // publishDir "${params.output_dir}/${task.process.replaceAll(':', '/')}", pattern: "", mode: 'copy'
     label 'many_cpu_medium'
+    container 'damicyclomics/cyclomicseq:0.7.2'
+
 
     input:
         tuple val(X), path(bam), path(bai)

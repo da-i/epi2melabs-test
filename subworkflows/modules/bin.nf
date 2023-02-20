@@ -25,7 +25,6 @@ process AnnotateBamXTags{
     publishDir "${params.output_dir}/consensus_aligned", mode: 'copy'
     container 'damicyclomics/cyclomicseq:0.7.2'
 
-
     label 'many_low_cpu_high_mem'
 
     input:
